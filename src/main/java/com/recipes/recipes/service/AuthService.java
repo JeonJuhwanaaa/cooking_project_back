@@ -31,7 +31,24 @@ public class AuthService {
     // 로그인
     public String signin(SigninReqDto signinReqDto) {
         User user = userMapper.findUserByUsername(signinReqDto.getUsername());
-        return user.getEmail();
+
+        String result = "";
+
+        if(user == null) {
+            System.out.println("사용자 정보를 확인해주세요.");
+            System.out.println(signinReqDto.getUsername());
+            System.out.println(signinReqDto.getPassword());
+            result = "사용자 정보를 확인해주세요.";
+        }else if (!passwordEncoder.matches(signinReqDto.getPassword(), user.getPassword())) {
+            System.out.println("사용자 정보를 확인해주세요.");
+            System.out.println(signinReqDto.getUsername());
+            System.out.println(signinReqDto.getPassword());
+            result = "사용자 정보를 확인해주세요.";
+        }else {
+            System.out.println("로그인 성공");
+            result = "로그인 성공";
+        }
+        return  result;
     }
 
 }
