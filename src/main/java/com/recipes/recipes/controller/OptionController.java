@@ -19,4 +19,35 @@ public class OptionController {
     public ResponseEntity<?> getFoodType() {
         return ResponseEntity.ok(recipeOptionService.getFoodType());
     }
+
+    @GetMapping("/situations")
+    public ResponseEntity<?> getSituationType() {
+        return ResponseEntity.ok(recipeOptionService.getSituationType());
+    }
+
+    @GetMapping("/ingredients")
+    public ResponseEntity<?> getIngredientType() {
+        return ResponseEntity.ok(recipeOptionService.getIngredientType());
+    }
+
+    @GetMapping("/ways")
+    public ResponseEntity<?> getWayType() {
+        return ResponseEntity.ok(recipeOptionService.getWayType());
+    }
+
+    @GetMapping("/personnels")
+    public ResponseEntity<?> getPersonnel() {
+        return ResponseEntity.ok(recipeOptionService.getPersonnel());
+    }
+
+    @GetMapping("/takeTimes")
+    public ResponseEntity<?> getTakeTime() {
+        return ResponseEntity.ok(recipeOptionService.getTakeTime());
+    }
+
+    @GetMapping("/difficultyLevels")
+    public ResponseEntity<?> getDifficultyLevel() {
+        return ResponseEntity.ok(recipeOptionService.getDifficultyLevel());
+    }
+
 }

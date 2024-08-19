@@ -10,6 +10,36 @@
         <result property="foodType" column="food_type" />
     </resultMap>
 
+    <resultMap id="SituationTypeResultMap" type="com.recipes.recipes.entity.SituationType">
+        <id property="situationTypeId" column="situation_type_id"/>
+        <result property="situationType" column="situation_type" />
+    </resultMap>
+
+    <resultMap id="IngredientTypeResultMap" type="com.recipes.recipes.entity.IngredientType">
+        <id property="ingredientTypeId" column="ingredient_type_id" />
+        <result property="ingredientType" column="ingredient_type" />
+    </resultMap>
+
+    <resultMap id="WayTypeResultMap" type="com.recipes.recipes.entity.WayType">
+        <id property="wayTypeId" column="way_type_id" />
+        <result property="wayType" column="way_type" />
+    </resultMap>
+
+    <resultMap id="PersonnelResultMap" type="com.recipes.recipes.entity.Personnel">
+        <id property="personnelId" column="personnel_id" />
+        <result property="personnel" column="personnel" />
+    </resultMap>
+
+    <resultMap id="TakeTimeResultMap" type="com.recipes.recipes.entity.TakeTime">
+        <id property="takeTimeId" column="take_time_id" />
+        <result property="takeTime" column="take_time" />
+    </resultMap>
+
+    <resultMap id="DifficultyLevel" type="com.recipes.recipes.entity.DifficultyLevel">
+        <id property="difficultyLevelId" column="difficulty_level_id" />
+        <result property="difficultyLevel" column="difficulty_level" />
+    </resultMap>
+
     <select id="getFoodType" resultMap="FoodTypeResultMap">
         select
             food_type_id,
@@ -17,5 +47,55 @@
         from
             food_type_tb
     </select>
+
+    <select id="getSituationType" resultMap="SituationTypeResultMap">
+        select
+            situation_type_id,
+            situation_type
+        from
+            situation_type_tb
+    </select>
+
+    <select id="getIngredientType" resultMap="IngredientTypeResultMap">
+        select
+            ingredient_type_id,
+            ingredient_type
+        from
+            ingredient_type_tb
+    </select>
+
+    <select id="getWayType" resultMap="WayTypeResultMap">
+        select
+            way_type_id,
+            way_type
+        from
+            way_type_tb
+    </select>
+
+    <select id="getPersonnel" resultMap="PersonnelResultMap">
+        select
+            personnel_id,
+            personnel
+        from
+            personnel_tb
+    </select>
+
+    <select id="getTakeTime" resultMap="TakeTimeResultMap">
+        select
+            take_time_id,
+            take_time
+        from
+            take_time_tb
+    </select>
+
+    <select id="getDifficultyLevel" resultMap="DifficultyLevel">
+        select
+            difficulty_level_id,
+            difficulty_level
+        from
+            difficulty_level_tb
+    </select>
+
+
 
 </mapper>
