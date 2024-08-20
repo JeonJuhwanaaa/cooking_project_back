@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.recipes.recipes.repository.RecipeMapper">
+
+    <resultMap id="RecipeResultMap" type="com.recipes.recipes.entity.Recipe">
+        <id property="recipeId" column="recipe_id" />
+        <result property="userId" column="user_id" />
+        <result property="recipeTitle" column="recipe_title" />
+        <result property="recipeIntro" column="recipe_intro" />
+        <result property="foodTypeId" column="food_type_id" />
+        <result property="situationTypeId" column="situation_type_id" />
+        <result property="ingredientTypeId" column="ingredient_type_id" />
+        <result property="wayTypeId" column="way_type_id" />
+        <result property="takeTimeId" column="take_time_id" />
+        <result property="personnelId" column="personnel_id" />
+        <result property="difficultyLevelId" column="difficulty_level_id" />
+        <result property="recipeTip" column="recipe_tip" />
+        <result property="createDate" column="create_date" />
+        <result property="updateDate" column="update_date" />
+    </resultMap>
+
+
+    <insert id="saveRecipe"
+            parameterType="com.recipes.recipes.entity.Recipe"
+            keyProperty="recipeId"
+            useGeneratedKeys="true"
+    >
+        insert into recipe_tb
+        values (0, #{userId}, #{recipeTitle}, #{recipeIntro}, #{foodTypeId}, #{situationTypeId}, #{ingredientTypeId}, #{wayTypeId}, #{takeTimeId}, #{personnelId}, #{difficultyLevelId}, #{recipeTip}, now(), now());
+    </insert>
+
+
+</mapper>

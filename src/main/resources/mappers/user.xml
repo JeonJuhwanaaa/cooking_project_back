@@ -30,6 +30,7 @@
             (0, #{username}, #{password}, #{name}, #{genderId}, #{email}, #{phoneNumber}, #{address}, #{extraAddress}, now(), now())
     </insert>
 
+
     <select id="findUserByUsername"
             parameterType="String"
             resultMap="UserResultMap"

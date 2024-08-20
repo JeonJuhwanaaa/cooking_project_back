@@ -14,4 +14,5 @@ public class Step {
     private int recipeId;
     private int stepNumber;
     private String stepDescription;
+    private String stepPhotoUrl;
 }
