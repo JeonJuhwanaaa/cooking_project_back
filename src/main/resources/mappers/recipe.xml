@@ -20,6 +20,26 @@
         <result property="recipeTip" column="recipe_tip" />
         <result property="createDate" column="create_date" />
         <result property="updateDate" column="update_date" />
+        <association property="ingredient" resultMap="IngredientResultMap"/>
+        <association property="seasoning" resultMap="SeasoningResultMap"/>
+    </resultMap>
+
+    <resultMap id="IngredientResultMap" type="com.recipes.recipes.entity.Ingredient">
+        <id property="ingredientId" column="ingredient_id"/>
+        <result property="recipeId" column="recipe_id"/>
+        <result property="ingredientName" column="ingredient_name"/>
+        <result property="ingredientState" column="ingredient_state"/>
+        <result property="createDate" column="create_date" />
+        <result property="updateDate" column="update_date" />
+    </resultMap>
+
+    <resultMap id="SeasoningResultMap" type="com.recipes.recipes.entity.Seasoning">
+        <id property="seasoningId" column="seasoning_id"/>
+        <result property="recipeId" column="recipe_id"/>
+        <result property="seasoningName" column="seasoning_name"/>
+        <result property="seasoningState" column="seasoning_state"/>
+        <result property="createDate" column="create_date" />
+        <result property="updateDate" column="update_date" />
     </resultMap>
 
 
@@ -30,6 +50,24 @@
     >
         insert into recipe_tb
         values (0, #{userId}, #{recipeTitle}, #{recipeIntro}, #{foodTypeId}, #{situationTypeId}, #{ingredientTypeId}, #{wayTypeId}, #{takeTimeId}, #{personnelId}, #{difficultyLevelId}, #{recipeTip}, now(), now());
+    </insert>
+
+    <insert id="saveIngredient"
+            parameterType="com.recipes.recipes.entity.Ingredient"
+            keyProperty="ingredientId"
+            useGeneratedKeys="true"
+    >
+        insert into ingredient_tb
+        values (0, #{recipeId}, #{ingredient_name}, #{ingredient_state}, now(), now());
+    </insert>
+
+    <insert id="saveSeasoning"
+            parameterType="com.recipes.recipes.entity.Seasoning"
+            keyProperty="seasoningId"
+            useGeneratedKeys="true"
+    >
+        insert into seasoning_tb
+        values (0, #{recipeId}, #{seasoning_name}, #{seasoning_state}, now(), now());
     </insert>
 
 

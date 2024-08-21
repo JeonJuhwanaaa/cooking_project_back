@@ -1,6 +1,8 @@
 package com.recipes.recipes.controller;
 
+import com.recipes.recipes.dto.IngredientReqDto;
 import com.recipes.recipes.dto.RecipeRegistrationDto;
+import com.recipes.recipes.dto.SeasoningReqDto;
 import com.recipes.recipes.service.RecipeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -17,7 +19,7 @@ public class RecipeController {
     private RecipeService recipeService;
 
     @PostMapping("/registration")
-    public ResponseEntity<?> recipeRegistration(@RequestBody RecipeRegistrationDto recipeRegistrationDto) {
-        return ResponseEntity.ok(recipeService.recipeRegistration(recipeRegistrationDto));
+    public ResponseEntity<?> recipeRegistration(@RequestBody RecipeRegistrationDto recipeRegistrationDto, IngredientReqDto ingredientReqDto, SeasoningReqDto seasoningReqDto) {
+        return ResponseEntity.ok(recipeService.recipeRegistration(recipeRegistrationDto, ingredientReqDto, seasoningReqDto));
     }
 }

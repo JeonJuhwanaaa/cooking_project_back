@@ -5,6 +5,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
+
 @Builder
 @Data
 @AllArgsConstructor
@@ -14,4 +16,6 @@ public class Seasoning {
     private int recipeId;
     private String seasoningName;
     private String seasoningState;
+    private LocalDateTime createDate;
+    private LocalDateTime updateDate;
 }

@@ -27,4 +27,7 @@ public class Recipe {
     private String recipeTip;
     private LocalDateTime createDate;
     private LocalDateTime updateDate;
+
+    private Ingredient ingredient;
+    private Seasoning seasoning;
 }
