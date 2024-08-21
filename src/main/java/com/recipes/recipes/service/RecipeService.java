@@ -20,26 +20,13 @@ public class RecipeService {
     @Autowired
     private RecipeMapper recipeMapper;
 
-    public int recipeRegistration(RecipeRegistrationDto recipeRegistrationDto, IngredientReqDto ingredientReqDto, SeasoningReqDto seasoningReqDto) {
+    public int recipeRegistration(RecipeRegistrationDto recipeRegistrationDto) {
         int successCount = 0;
 
         Recipe recipe = recipeRegistrationDto.toEntity();
 //        System.out.println(recipe);
         successCount += recipeMapper.saveRecipe(recipe);
 
-        // Save all ingredients
-        List<Ingredient> ingredients = ingredientReqDto.toEntity();
-        System.out.println(ingredients);
-        for (Ingredient ingredient : ingredients) {
-            successCount += recipeMapper.saveIngredient(ingredient);
-        }
-
-        // Save all seasonings
-        List<Seasoning> seasonings = seasoningReqDto.toEntity();
-        System.out.println(seasonings);
-        for (Seasoning seasoning : seasonings) {
-            successCount += recipeMapper.saveSeasoning(seasoning);
-        }
         System.out.println(successCount);
         return successCount;
     }
@@ -50,6 +37,17 @@ public class RecipeService {
         System.out.println(ingredients);
         for(Ingredient ingredient : ingredients) {
             successCount += recipeMapper.saveIngredient(ingredient);
+        }
+        return successCount;
+    }
+
+    public int seasoningRegistration(SeasoningReqDto seasoningReqDto) {
+        int successCount = 0;
+
+        List<Seasoning> seasonings = seasoningReqDto.toEntity();
+        System.out.println(seasonings);
+        for(Seasoning seasoning : seasonings) {
+            successCount += recipeMapper.saveSeasoning(seasoning);
         }
         return successCount;
     }
