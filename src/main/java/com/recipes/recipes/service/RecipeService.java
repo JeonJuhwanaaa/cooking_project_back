@@ -12,6 +12,8 @@ import com.recipes.recipes.repository.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class RecipeService {
 
@@ -22,13 +24,33 @@ public class RecipeService {
         int successCount = 0;
 
         Recipe recipe = recipeRegistrationDto.toEntity();
-        Ingredient ingredient = ingredientReqDto.toEntity();
-        Seasoning seasoning = seasoningReqDto.toEntity();
-
+//        System.out.println(recipe);
         successCount += recipeMapper.saveRecipe(recipe);
-        successCount += recipeMapper.saveIngredient(ingredient);
-        successCount += recipeMapper.saveSeasoning(seasoning);
 
+        // Save all ingredients
+        List<Ingredient> ingredients = ingredientReqDto.toEntity();
+        System.out.println(ingredients);
+        for (Ingredient ingredient : ingredients) {
+            successCount += recipeMapper.saveIngredient(ingredient);
+        }
+
+        // Save all seasonings
+        List<Seasoning> seasonings = seasoningReqDto.toEntity();
+        System.out.println(seasonings);
+        for (Seasoning seasoning : seasonings) {
+            successCount += recipeMapper.saveSeasoning(seasoning);
+        }
+        System.out.println(successCount);
+        return successCount;
+    }
+    public int ingredientRegistration(IngredientReqDto ingredientReqDto) {
+        int successCount = 0;
+
+        List<Ingredient> ingredients = ingredientReqDto.toEntity();
+        System.out.println(ingredients);
+        for(Ingredient ingredient : ingredients) {
+            successCount += recipeMapper.saveIngredient(ingredient);
+        }
         return successCount;
     }
 }

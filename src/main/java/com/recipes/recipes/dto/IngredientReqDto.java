@@ -7,6 +7,9 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Data
 @Builder
 @AllArgsConstructor
@@ -14,14 +17,19 @@ import lombok.NoArgsConstructor;
 public class IngredientReqDto {
 
     private int recipeId;
-    private String ingredientName;
-    private String ingredientState;
+    private List<String> ingredientName;
+    private List<String> ingredientState;
 
-    public Ingredient toEntity() {
-        return Ingredient.builder()
-                .recipeId(recipeId)
-                .ingredientName(ingredientName)
-                .ingredientState(ingredientState)
-                .build();
+    public List<Ingredient> toEntity() {
+        List<Ingredient> ingredients = new ArrayList<>();
+        for (int i = 0; i < ingredientName.size(); i++) {
+            ingredients.add(Ingredient.builder()
+                    .recipeId(recipeId)
+                    .ingredientName(ingredientName.get(i))
+                    .ingredientState(ingredientState.get(i))
+                    .build());
+        }
+        System.out.println(ingredients);
+        return ingredients;
     }
 }
