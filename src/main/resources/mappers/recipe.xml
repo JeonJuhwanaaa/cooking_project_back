@@ -43,6 +43,16 @@
         <result property="updateDate" column="update_date" />
     </resultMap>
 
+    <resultMap id="StepResultMap" type="com.recipes.recipes.entity.Step">
+        <id property="stepId" column="step_id" />
+        <result property="recipeId" column="recipe_id" />
+        <result property="stepNumber" column="step_number" />
+        <result property="stepDescription" column="step_description" />
+        <result property="stepPhotoUrl" column="step_photo_url" />
+        <result property="createDate" column="create_date" />
+        <result property="updateDate" column="update_date" />
+    </resultMap>
+
 
     <insert id="saveRecipe"
             parameterType="com.recipes.recipes.entity.Recipe"
@@ -69,6 +79,13 @@
     >
         insert into seasoning_tb
         values (0, #{recipeId}, #{seasoningName}, #{seasoningState}, now(), now());
+    </insert>
+
+    <insert id="saveStep"
+            parameterType="com.recipes.recipes.entity.Step"
+    >
+        insert into step_tb
+        values (0, #{recipeId}, #{stepNumber}, #{stepDescription}, #{stepPhotoUrl}, now(), now());
     </insert>
 
 
