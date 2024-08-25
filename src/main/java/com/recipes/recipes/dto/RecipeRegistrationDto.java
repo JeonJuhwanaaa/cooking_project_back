@@ -9,6 +9,7 @@ import lombok.Data;
 public class RecipeRegistrationDto {
     private int userId;
     private String recipeTitle;
+    private String recipeMainImg;
     private String recipeIntro;
     private int foodTypeId;
     private int situationTypeId;
@@ -23,6 +24,7 @@ public class RecipeRegistrationDto {
         return Recipe.builder()
                 .userId(userId)
                 .recipeTitle(recipeTitle)
+                .recipeMainImg(recipeMainImg)
                 .recipeIntro(recipeIntro)
                 .foodTypeId(foodTypeId)
                 .situationTypeId(situationTypeId)

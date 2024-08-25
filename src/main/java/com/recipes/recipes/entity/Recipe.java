@@ -16,6 +16,7 @@ public class Recipe {
     private int recipeId;
     private int userId;
     private String recipeTitle;
+    private String recipeMainImg;
     private String recipeIntro;
     private int foodTypeId;
     private int situationTypeId;

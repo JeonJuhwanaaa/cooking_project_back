@@ -8,7 +8,6 @@ import com.recipes.recipes.entity.Ingredient;
 import com.recipes.recipes.entity.Recipe;
 import com.recipes.recipes.entity.Seasoning;
 import com.recipes.recipes.repository.RecipeMapper;
-import com.recipes.recipes.repository.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

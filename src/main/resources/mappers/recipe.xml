@@ -9,6 +9,7 @@
         <id property="recipeId" column="recipe_id" />
         <result property="userId" column="user_id" />
         <result property="recipeTitle" column="recipe_title" />
+        <result property="recipeMainImg" column="recipe_main_img" />
         <result property="recipeIntro" column="recipe_intro" />
         <result property="foodTypeId" column="food_type_id" />
         <result property="situationTypeId" column="situation_type_id" />
@@ -49,7 +50,7 @@
             useGeneratedKeys="true"
     >
         insert into recipe_tb
-        values (0, #{userId}, #{recipeTitle}, #{recipeIntro}, #{foodTypeId}, #{situationTypeId}, #{ingredientTypeId}, #{wayTypeId}, #{takeTimeId}, #{personnelId}, #{difficultyLevelId}, #{recipeTip}, now(), now());
+        values (0, #{userId}, #{recipeTitle}, #{recipeMainImg}, #{recipeIntro}, #{foodTypeId}, #{situationTypeId}, #{ingredientTypeId}, #{wayTypeId}, #{takeTimeId}, #{personnelId}, #{difficultyLevelId}, #{recipeTip}, now(), now());
     </insert>
 
     <insert id="saveIngredient"
