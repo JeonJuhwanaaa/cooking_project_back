@@ -6,7 +6,8 @@
 <mapper namespace="com.recipes.recipes.repository.RecipeMapper">
 
     <resultMap id="RecipeResultMap" type="com.recipes.recipes.entity.Recipe">
-        <id property="recipeId" column="recipe_id" />
+        <id property="recipeRegistrationId" column="recipe_registration_id"/>
+        <result property="recipeId" column="recipe_id" />
         <result property="userId" column="user_id" />
         <result property="recipeTitle" column="recipe_title" />
         <result property="recipeMainImg" column="recipe_main_img" />
@@ -56,11 +57,11 @@
 
     <insert id="saveRecipe"
             parameterType="com.recipes.recipes.entity.Recipe"
-            keyProperty="recipeId"
+            keyProperty="recipeRegistrationId"
             useGeneratedKeys="true"
     >
-        insert into recipe_tb
-        values (0, #{userId}, #{recipeTitle}, #{recipeMainImg}, #{recipeIntro}, #{foodTypeId}, #{situationTypeId}, #{ingredientTypeId}, #{wayTypeId}, #{takeTimeId}, #{personnelId}, #{difficultyLevelId}, #{recipeTip}, now(), now());
+        insert into recipe_registration_tb
+        values (0, #{recipeId}, #{userId}, #{recipeTitle}, #{recipeMainImg}, #{recipeIntro}, #{foodTypeId}, #{situationTypeId}, #{ingredientTypeId}, #{wayTypeId}, #{takeTimeId}, #{personnelId}, #{difficultyLevelId}, #{recipeTip}, now(), now());
     </insert>
 
     <insert id="saveIngredient"

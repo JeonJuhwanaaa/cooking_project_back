@@ -28,14 +28,14 @@ public class RecipeService {
 //        System.out.println(recipe);
         successCount += recipeMapper.saveRecipe(recipe);
 
-        System.out.println(successCount);
+//        System.out.println(successCount);
         return successCount;
     }
     public int ingredientRegistration(IngredientReqDto ingredientReqDto) {
         int successCount = 0;
 
         List<Ingredient> ingredients = ingredientReqDto.toEntity();
-        System.out.println(ingredients);
+//        System.out.println(ingredients);
         for(Ingredient ingredient : ingredients) {
             successCount += recipeMapper.saveIngredient(ingredient);
         }
@@ -46,7 +46,7 @@ public class RecipeService {
         int successCount = 0;
 
         List<Seasoning> seasonings = seasoningReqDto.toEntity();
-        System.out.println(seasonings);
+//        System.out.println(seasonings);
         for(Seasoning seasoning : seasonings) {
             successCount += recipeMapper.saveSeasoning(seasoning);
         }

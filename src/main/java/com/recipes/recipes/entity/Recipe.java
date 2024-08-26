@@ -13,6 +13,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Recipe {
+    private int recipeRegistrationId;
     private int recipeId;
     private int userId;
     private String recipeTitle;

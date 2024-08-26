@@ -7,6 +7,7 @@ import lombok.Data;
 @Data
 @Builder
 public class RecipeRegistrationDto {
+    private int recipeId;
     private int userId;
     private String recipeTitle;
     private String recipeMainImg;
@@ -22,6 +23,7 @@ public class RecipeRegistrationDto {
 
     public Recipe toEntity() {
         return Recipe.builder()
+                .recipeId(recipeId)
                 .userId(userId)
                 .recipeTitle(recipeTitle)
                 .recipeMainImg(recipeMainImg)
