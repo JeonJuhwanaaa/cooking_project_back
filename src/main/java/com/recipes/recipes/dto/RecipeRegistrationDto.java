@@ -1,6 +1,6 @@
 package com.recipes.recipes.dto;
 
-import com.recipes.recipes.entity.Recipe;
+import com.recipes.recipes.entity.RecipeRegistration;
 import lombok.Builder;
 import lombok.Data;
 
@@ -21,8 +21,8 @@ public class RecipeRegistrationDto {
     private int difficultyLevelId;
     private String recipeTip;
 
-    public Recipe toEntity() {
-        return Recipe.builder()
+    public RecipeRegistration toEntity() {
+        return RecipeRegistration.builder()
                 .recipeId(recipeId)
                 .userId(userId)
                 .recipeTitle(recipeTitle)

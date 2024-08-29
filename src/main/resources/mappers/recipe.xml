@@ -5,7 +5,7 @@
 
 <mapper namespace="com.recipes.recipes.repository.RecipeMapper">
 
-    <resultMap id="RecipeResultMap" type="com.recipes.recipes.entity.Recipe">
+    <resultMap id="RecipeResultMap" type="com.recipes.recipes.entity.RecipeRegistration">
         <id property="recipeRegistrationId" column="recipe_registration_id"/>
         <result property="recipeId" column="recipe_id" />
         <result property="userId" column="user_id" />
@@ -22,8 +22,23 @@
         <result property="recipeTip" column="recipe_tip" />
         <result property="createDate" column="create_date" />
         <result property="updateDate" column="update_date" />
+        <association property="user" column="UserResultMap" />
         <association property="ingredient" resultMap="IngredientResultMap"/>
         <association property="seasoning" resultMap="SeasoningResultMap"/>
+    </resultMap>
+
+    <resultMap id="UserResultMap" type="com.recipes.recipes.entity.User">
+        <id property="userId" column="user_id" />
+        <result property="username" column="username" />
+        <result property="password" column="password" />
+        <result property="name" column="name" />
+        <result property="genderId" column="gender_id" />
+        <result property="email" column="email" />
+        <result property="phoneNumber" column="phone_number" />
+        <result property="address" column="address" />
+        <result property="extraAddress" column="extra_address" />
+        <result property="createDate" column="create_date" />
+        <result property="updateDate" column="update_date" />
     </resultMap>
 
     <resultMap id="IngredientResultMap" type="com.recipes.recipes.entity.Ingredient">
@@ -56,7 +71,7 @@
 
 
     <insert id="saveRecipe"
-            parameterType="com.recipes.recipes.entity.Recipe"
+            parameterType="com.recipes.recipes.entity.RecipeRegistration"
             keyProperty="recipeRegistrationId"
             useGeneratedKeys="true"
     >
@@ -88,6 +103,20 @@
         insert into step_tb
         values (0, #{recipeId}, #{stepNumber}, #{stepDescription}, #{stepPhotoUrl}, now(), now());
     </insert>
+
+    <select id="getAllRecipes" resultMap="RecipeResultMap">
+        select distinct
+            rrt.recipe_id,
+            rrt.user_id,
+            rrt.recipe_title,
+            rrt.recipe_main_img,
+            rrt.recipe_intro,
+            ut.username
+        from
+            recipe_registration_tb rrt
+            left outer join user_tb ut on(ut.user_id = rrt.user_id)
+
+    </select>
 
 
 </mapper>

@@ -1,6 +1,7 @@
 package com.recipes.recipes.entity;
 
 
+import com.recipes.recipes.dto.SearchRecipesRespDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -12,7 +13,7 @@ import java.time.LocalDateTime;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Recipe {
+public class RecipeRegistration {
     private int recipeRegistrationId;
     private int recipeId;
     private int userId;
@@ -32,4 +33,16 @@ public class Recipe {
 
     private Ingredient ingredient;
     private Seasoning seasoning;
+    private User user;
+
+    public SearchRecipesRespDto toAllRecipeRespDto() {
+        SearchRecipesRespDto searchRecipe = new SearchRecipesRespDto();
+        searchRecipe.setRecipeId(recipeId);
+        searchRecipe.setUserId(userId);
+        searchRecipe.setRecipeTitle(recipeTitle);
+        searchRecipe.setRecipeMainImg(recipeMainImg);
+        searchRecipe.setRecipeIntro(recipeIntro);
+
+        return searchRecipe;
+    }
 }
